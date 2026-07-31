@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    // Pin the Node version in the job rather than relying on whatever is
+    // installed on the build host. Configured under Manage Jenkins > Tools.
+    tools {
+        nodejs 'node20'
+    }
+
     environment {
         AWS_REGION     = 'ap-south-1'
         AWS_ACCOUNT_ID = '875180007645'
