@@ -5,12 +5,10 @@ metadata:
   namespace: react-app
   labels:
     app: react-vite-app
-  annotations:
-    # Classic ELB in front of the pods; this is what makes the app reachable
-    # from a browser outside the cluster.
-    service.beta.kubernetes.io/aws-load-balancer-type: external
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: instance
-    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  # No aws-load-balancer-type annotation on purpose. Setting it to "external"
+  # hands provisioning to the AWS Load Balancer Controller add-on, which is not
+  # installed here, and the service would sit at <pending> forever. Leaving it
+  # off lets the in-tree EKS controller create an internet-facing Classic ELB.
 spec:
   type: LoadBalancer
   selector:
