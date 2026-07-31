@@ -14,6 +14,11 @@ function App() {
       <h1>React Vite on Amazon EKS</h1>
       <p className="tagline">Deployed automatically by a Jenkins CI/CD pipeline</p>
 
+      <p className="cd-banner">
+        Continuous deployment verified &mdash; this line reached the cluster
+        without anyone pressing Build.
+      </p>
+
       <div className="card">
         <button onClick={() => setCount((c) => c + 1)}>
           count is {count}
