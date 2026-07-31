@@ -84,7 +84,9 @@ pipeline {
                     sh """
                         aws eks update-kubeconfig --region ${AWS_REGION} --name ${CLUSTER_NAME}
 
-                        kubectl apply -f k8s/namespace.yaml
+                        # k8s/namespace.yaml is applied once during cluster setup by an
+                        # admin. The pipeline's EKS access entry is scoped to the
+                        # react-app namespace, so it deliberately cannot create one.
 
                         # Substitute the freshly built tag into the manifest.
                         sed 's|IMAGE_PLACEHOLDER|${IMAGE_NAME}:${env.IMAGE_TAG}|' \
