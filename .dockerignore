@@ -1,0 +1,11 @@
+node_modules
+dist
+.git
+.gitignore
+Jenkinsfile
+k8s
+README.md
+*.log
+.DS_Store
+.env
+.env.*
